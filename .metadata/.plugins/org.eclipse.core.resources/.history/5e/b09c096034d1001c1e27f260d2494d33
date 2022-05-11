@@ -1,0 +1,29 @@
+/*
+ * Trabajo.h
+ *
+ *  Created on: 11 may. 2022
+ *      Author: JUNMI
+ */
+
+#ifndef TRABAJO_H_
+#define TRABAJO_H_
+
+typedef struct{
+
+int id;
+int idNotebook;
+int idServicio;
+eFecha fPactada;
+char descripcion[20];
+
+}eTrabajo;
+
+int mostrarTrabajo(eNotebook lista, eMarca marcas[], int tamMar, eTipo tipos[], int tamTip);
+
+int listarTrabajoks(eNotebook vec[], eMarca marcas[], int tamMar, eTipo tipos[], int tamTip);
+
+
+int altaTrabajo(eNotebook vec[], int tam, int* pId, eMarca marcas[], int tamMar, eTipo tipos[], int tamTip);
+
+
+#endif /* TRABAJO_H_ */

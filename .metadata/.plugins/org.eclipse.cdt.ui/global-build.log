@@ -1,0 +1,60 @@
+12:08:32 **** Rebuild of configuration Debug for project Gil.Miguel.Lab1.1A ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Marca.o" "..\\src\\Marca.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Notebook.o" "..\\src\\Notebook.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Trabajo.o" "..\\src\\Trabajo.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Gil.Miguel.Lab1.1A.o" "..\\src\\Gil.Miguel.Lab1.1A.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Tipo.o" "..\\src\\Tipo.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Servicio.o" "..\\src\\Servicio.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Fecha.o" "..\\src\\Fecha.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Validaciones.o" "..\\src\\Validaciones.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Menu.o" "..\\src\\Menu.c" 
+gcc -o Gil.Miguel.Lab1.1A.exe "src\\Fecha.o" "src\\Gil.Miguel.Lab1.1A.o" "src\\Marca.o" "src\\Menu.o" "src\\Notebook.o" "src\\Servicio.o" "src\\Tipo.o" "src\\Trabajo.o" "src\\Validaciones.o" 
+Info: Nothing to build for Gil.Miguel.Lab1.1A
+Info: Nothing to build for Gil.Miguel.Lab1.1A
+12:14:03 **** Incremental Build of configuration Debug for project Gil.Miguel.Lab1.1A ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Trabajo.o" "..\\src\\Trabajo.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Notebook.o" "..\\src\\Notebook.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Gil.Miguel.Lab1.1A.o" "..\\src\\Gil.Miguel.Lab1.1A.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Tipo.o" "..\\src\\Tipo.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Fecha.o" "..\\src\\Fecha.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Validaciones.o" "..\\src\\Validaciones.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Servicio.o" "..\\src\\Servicio.c" 
+..\src\Servicio.c: In function 'cargarDescripcionServicio':
+..\src\Servicio.c:40:45: error: expected expression before '/' token
+   40 |     if(descripcion != NULL && indice != -1) /
+      |                                             ^
+..\src\Servicio.c:35:6: warning: unused variable 'todoOk' [-Wunused-variable]
+   35 |  int todoOk = 0;
+      |      ^~~~~~
+..\src\Servicio.c:48:1: warning: control reaches end of non-void function [-Wreturn-type]
+   48 | }
+      | ^
+12:14:47 **** Incremental Build of configuration Debug for project Gil.Miguel.Lab1.1A ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Servicio.o" "..\\src\\Servicio.c" 
+..\src\Servicio.c: In function 'cargarDescripcionServicio':
+..\src\Servicio.c:40:45: error: expected expression before '/' token
+   40 |     if(descripcion != NULL && indice != -1) /
+      |                                             ^
+..\src\Servicio.c:35:6: warning: unused variable 'todoOk' [-Wunused-variable]
+   35 |  int todoOk = 0;
+      |      ^~~~~~
+..\src\Servicio.c:48:1: warning: control reaches end of non-void function [-Wreturn-type]
+   48 | }
+      | ^
+12:15:01 **** Incremental Build of configuration Debug for project Gil.Miguel.Lab1.1A ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Servicio.o" "..\\src\\Servicio.c" 
+..\src\Servicio.c: In function 'cargarDescripcionServicio':
+..\src\Servicio.c:43:14: error: unknown type name 'e'
+   43 |              e
+      |              ^
+..\src\Servicio.c:44:3: warning: unused variable 'todoOk' [-Wunused-variable]
+   44 |   todoOk = 1;
+      |   ^~~~~~
+12:15:07 **** Incremental Build of configuration Debug for project Gil.Miguel.Lab1.1A ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Servicio.o" "..\\src\\Servicio.c" 
+gcc -o Gil.Miguel.Lab1.1A.exe "src\\Fecha.o" "src\\Gil.Miguel.Lab1.1A.o" "src\\Marca.o" "src\\Menu.o" "src\\Notebook.o" "src\\Servicio.o" "src\\Tipo.o" "src\\Trabajo.o" "src\\Validaciones.o" 

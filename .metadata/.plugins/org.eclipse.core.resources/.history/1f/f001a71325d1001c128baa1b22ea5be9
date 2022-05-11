@@ -1,0 +1,52 @@
+/*
+ * Notebook.h
+ *
+ *  Created on: 11 may. 2022
+ *      Author: JUNMI
+ */
+
+#ifndef NOTEBOOK_H_
+#define NOTEBOOK_H_
+
+typedef struct
+{
+    int id;
+    char modelo[20];
+    float precio;
+    int idMarca;
+    int idTipo;
+    int isEmpty;
+} eNotebook;
+
+#endif /* NOTEBOOK_H_ */
+
+//Muestreo y lista
+/// @brief Muestro una fila de datos de un pasajero.
+///
+/// @param e recibe una variable de eEmpleado para mostrar los datos
+/// @param sectores recibe una variable de eSector para mostrar el sector
+/// @param tam recibe el tamaño del array de eSector
+/// @return devuelve 1 si funcionó, y sino, devuelve 0
+int mostrarNotebook(eNotebook e, eSector sectores[], int tam);
+
+int listarEmpleados(eEmpleado vec[], int tam, eSector sectores[], int tamSec);
+
+//Inicializar
+/// @brief Inicializa el array de empleados, colocando a todos
+/// los 'isEmpty' en '1'.
+///
+/// @param list recibe el array de la estructura empleado
+/// @param len recibe el tamaño del array
+/// @return devuelve 1 si funcionó, y sino, devuelve 0
+int inicializarEmpleados(eEmpleado vec[], int tam);
+
+//Alta
+int buscarEmpleadoLibre(eEmpleado vec[], int tam, int* pIndex);
+int altaEmpleado(eEmpleado vec[], int tam, int* pLegajo, eSector sectores[], int tamSec);
+
+//Baja
+int buscarEmpleado(eEmpleado vec[], int tam,int legajo, int* pIndex);
+int bajaEmpleado(eEmpleado vec[], int tam,eSector sectores[], int tamSec);
+
+//Modificación
+int modificarEmpleado(eEmpleado vec[], int tam,eSector sectores[], int tamSec);

@@ -1,0 +1,7 @@
+12:15:07 **** Incremental Build of configuration Debug for project Gil.Miguel.Lab1.1A ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Servicio.o" "..\\src\\Servicio.c" 
+gcc -o Gil.Miguel.Lab1.1A.exe "src\\Fecha.o" "src\\Gil.Miguel.Lab1.1A.o" "src\\Marca.o" "src\\Menu.o" "src\\Notebook.o" "src\\Servicio.o" "src\\Tipo.o" "src\\Trabajo.o" "src\\Validaciones.o" 
+
+12:15:07 Build Finished. 0 errors, 0 warnings. (took 621ms)
+

@@ -1,0 +1,388 @@
+/*
+ * Notebook.c
+ *
+ *  Created on: 11 may. 2022
+ *      Author: JUNMI
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "Notebook.h"
+#include "Marca.h"
+#include "Tipo.h"
+#include "Menu.h"
+#include "Validaciones.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///Mostrar y Listar///
+int mostrarNotebook(eNotebook lista, eMarca marcas[], int tamMar, eTipo tipos[], int tamTip)
+{
+    int todoOk = 0;
+    char descMarca[20];
+    char descTipo[20];
+
+    if(marcas != NULL && tamMar > 0 && tipos != NULL && tamTip > 0)
+    {
+
+    cargarDescripcionMarca(marcas, tamMar, lista.idMarca, descMarca);
+    cargarDescripcionTipo(tipos, tamTip, lista.idTipo, descTipo);
+    //Le pasamos lista.idSector para que la función sepa cuál ID de sector tiene que buscar, si es correcta y la encuentra,
+    //nos devuelve un char de descripción en el parámetro 'descSector'
+
+
+    printf("  %4d  %15s  %10s  %10s     %9.2f\n",
+    		lista.id, lista.modelo, descMarca, descTipo, lista.precio);
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int listarNotebooks(eNotebook vec[], eMarca marcas[], int tamMar, eTipo tipos[], int tamTip)
+{
+    int todoOk = 0;
+    int flag = 0;
+    if(vec != NULL && marcas != NULL && tamMar > 0 && tipos != NULL && tamTip > 0)
+    {
+        printf("          *** Listado de Notebooks ***\n\n");
+        printf("   ID             Modelo       Marca       Tipo       Precio\n");
+        printf("-----------------------------------------------------------------\n");
+        for(int i=0; i < 10; i++) // Recorro
+        {
+            if( !vec[i].isEmpty ) //Si paso por un empleado que no está vacio...
+            {
+                mostrarNotebook(vec[i], marcas, tamMar, tipos, tamTip);   //Lo muestro. (Le paso el vector con el indice y la estructura
+                flag++;										 //de sectores con el tam para poder mostrar el Sector)
+            }//La flag es para saber si ya hay mínimo 1 empleado
+        }
+        if(flag == 0) //Si no hay mínimo 1 empleado... printeo que no hay
+        {
+            printf("     No hay notebooks en el sistema");
+        }
+        printf("\n\n");
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///Funciones Principales///
+
+int inicializarNotebooks(eNotebook vec[], int tam)  //Pongo todos los isEmpty en 1
+{
+    int todoOk = 0;
+    if(vec != NULL && tam > 0)
+    {
+        for(int i=0; i < tam; i++)  //Recorro
+        {
+            vec[i].isEmpty = 1;     //Todos los isEmpty quedan en '1'
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int buscarNotebookLibre(eNotebook vec[], int tam, int* pIndex) //El pIndex es donde vamos a cargar el indice que
+{															   //encontramos libre (o sea, con isEmpty en 1)
+    int todoOk = 0;
+    if(vec != NULL && tam > 0 && pIndex != NULL)
+    {
+        *pIndex = -1;  //Ya lo cargamos con -1 (que no encontramos ninguno)
+        for(int i=0; i < tam; i++) //Recorremos
+        {
+            if(vec[i].isEmpty == 1) //Si el empleado esta libre...
+            {
+                *pIndex = i; //Cargo el pIndex con el indice que acabamos de encontrar libre
+                break; //Paramos de buscar
+            }
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int altaNotebook(eNotebook vec[], int tam, int* pId, eMarca marcas[], int tamMar, eTipo tipos[], int tamTip)
+{                      //Recibe las estructuras con sus tam y un puntero a Legajo (ID)
+    int todoOk = 0;
+    int indice;   // Este va a ser indice al que le vamos a cargar todos los datos
+    char auxCad[100];
+    eNotebook nuevaNotebook; //Aca vamos a cargar los datos
+    int validPrecio = 0;
+
+    if(vec != NULL && tam > 0 && pId != NULL && marcas != NULL && tamMar > 0 && tipos != NULL && tamTip > 0)
+    {
+        if(buscarNotebookLibre(vec, tam, &indice)) //Buscamos un lugar donde podamos cargar datos (isEmpty == 1)
+        {
+            if(indice == -1) //Si no encontro lugar libre...
+            {
+                printf("No hay lugar en el sistema\n");
+            }
+            else
+            {
+                // Si encontro lugar libre ya empiezo a pedir y cargar datos:
+
+ /*MODELO*/     printf("Ingrese el modelo de la Notebook: ");
+                fflush(stdin);
+                gets(auxCad);
+                validarPalabra(auxCad);
+				strcpy(nuevaNotebook.modelo, auxCad);
+
+
+/*MARCA*/       listarMarcas(marcas, tamMar); //Primero muestro los sectores
+
+			    printf("Ingrese la ID de la marca a la que pertenece: ");
+				scanf("%d", &nuevaNotebook.idMarca);
+
+				while(!validarMarca(marcas, tamMar, nuevaNotebook.idMarca))
+				{
+					printf("Error, esa ID no corresponde a ninguna marca. Reingrese ID: ");
+					fflush(stdin);
+					scanf("%d", &nuevaNotebook.idMarca);
+				}
+
+/*TIPOS*/       listarTipos(tipos, tamTip); //Primero muestro los sectores
+
+				printf("Ingrese la ID del tipo al que pertenece: ");
+				scanf("%d", &nuevaNotebook.idTipo);
+
+				while(!validarTipo(tipos, tamTip, nuevaNotebook.idTipo))
+				{
+					printf("Error, esa ID no corresponde a ningún tipo. Reingrese ID: ");
+					fflush(stdin);
+					scanf("%d", &nuevaNotebook.idTipo);
+				}
+
+
+/*PRECIO*/      printf("Ingrese precio: ");
+				validPrecio = scanf("%f", &nuevaNotebook.precio);
+                validarFloat(validPrecio, &nuevaNotebook.precio);
+
+
+                nuevaNotebook.isEmpty = 0; //Pongo el isEmpty en 0 (ya no esta libre)
+                nuevaNotebook.id = *pId; //El legajo va a ser el que recibimos del main
+                *pId = *pId + 1; //Ahora el legajo que recibimos del main, aumenta +1, para cargarselo al proximo
+                vec[indice] = nuevaNotebook; //Finalmente le pasamos todos los datos que cargamos, a la estructura real
+                todoOk = 1;
+            }
+        }
+        else
+        {
+            printf("Ocurrio un problema con los parámetros\n");
+        }
+    }
+    return todoOk;
+}
+
+
+int buscarNotebook(eNotebook vec[], int tam, int id, int* pIndex) //Busco un empleado por su legajo (o ID)
+{
+    int todoOk = 0;
+    if(vec != NULL && tam > 0 && id > 0 && pIndex != NULL)
+    {
+        *pIndex = -1; //El indice que voy a mandar lo cargo en -1, como si no hubiera encontrado
+        for(int i = 0; i < tam; i++) //Recorro
+        {
+            if(vec[i].isEmpty == 0 && vec[i].id == id) //Si no está vacío y coincide con el legajo que busco...
+            {
+                *pIndex = i; //Devuelvo el indice donde lo encontré
+                break;
+            }
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+
+int bajaNotebook(eNotebook vec[], int tam, eMarca marcas[], int tamMar, eTipo tipos[], int tamTip)
+{
+    int todoOk = 0;
+    int indice;  //Aca voy a cargar el indice del empleado que voy a dar de baja
+    int id; //Aca voy a cargar el legajo que el usuario ingrese
+    char confirma;
+    if(vec != NULL && tam > 0 && marcas != NULL && tamMar > 0 && tipos != NULL && tamTip > 0)
+    {
+        listarNotebooks(vec, marcas, tamMar, tipos, tamTip); //Primero le muestro los empleados al usuario para que elija
+        printf("Ingrese ID: ");
+        scanf("%d", &id);
+
+        if(buscarNotebook(vec, tam, id, &indice)) //Aca busco mediante el legajo ingresado, el indice del empleado
+        {
+            if(indice == -1) //Si no encuentra...
+            {
+                printf("No hay un empleado con legajo %d\n", id);
+            }
+            else //Si lo encuentra...
+            {
+                mostrarNotebook(vec[indice], marcas, tamMar, tipos, tamTip); //Le muestro el empleado que seleccionó
+                printf("Si desea hacer la baja, ingrese 's': ");
+                fflush(stdin);
+                scanf("%c", &confirma);
+                if(confirma != 'S' && confirma != 's')
+                {
+                    printf("Baja cancelada por el usuario\n");
+                }
+                else
+                {
+                    vec[indice].isEmpty = 1;  //Lo doy de baja. Es decir, le pongo el isEmpty en 1
+                    printf("Baja realizada correctamente\n");
+                    todoOk = 1;
+                }
+            }
+        }
+        else
+        {
+            printf("Ocurrió un problema al buscar la Notebook\n");
+        }
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+
+int modificarNotebook(eNotebook vec[], int tam, eMarca marcas[], int tamMar, eTipo tipos[], int tamTip)
+{
+    int todoOk = 0;
+    int indice; //Aca voy a cargar el indice del empleado que voy a modificar
+    int id; //Aca voy a cargar el legajo que el usuario ingrese
+    char salir = 'n';
+    int validPrecio = 0;
+
+
+    if(vec != NULL && tam > 0 && marcas != NULL && tamMar > 0 && tipos != NULL && tamTip > 0)
+    {
+        listarNotebooks(vec, marcas, tamMar, tipos, tamTip); //Primero le muestro los empleados al usuario
+        printf("Ingrese ID: ");
+        scanf("%d", &id);
+
+        if(buscarNotebook(vec, tam, id, &indice)) //Aca busco mediante el legajo ingresado, el indice del empleado
+        {
+            if(indice == -1) //Si no encontro el empleado...
+            {
+                printf("No hay una notebook con ID %d\n", id);
+            }
+            else //Si lo encontro...
+            {
+            	mostrarNotebook(vec[indice], marcas, tamMar, tipos, tamTip); //Le muestro el empleado que seleccionó
+
+                do
+                {
+                    switch(menuModificarNotebook()) //Llamo al menu de Modificar
+                    {
+                    case 1:
+                    	printf("Ingrese precio: ");
+						validPrecio = scanf("%f", &vec[indice].precio);
+						validarFloat(validPrecio, &vec[indice].precio);
+
+						printf("Precio modificado correctamente");
+                        break;
+
+                    case 2:
+                    	listarTipos(tipos, tamTip);
+
+						printf("Ingrese la ID del tipo al que pertenece: ");
+						scanf("%d", &vec[indice].idTipo);
+
+						while(!validarTipo(tipos, tamTip, vec[indice].idTipo))
+						{
+							printf("Error, esa ID no corresponde a ningún tipo. Reingrese ID: ");
+							fflush(stdin);
+							scanf("%d", &vec[indice].idTipo);
+						}
+
+						printf("Tipo modificado correctamente");
+                    	break;
+
+                    case 3:
+                        salir = 's';
+
+                        break;
+                    }
+                    system("pause");
+
+                }
+                while(salir != 's');
+            }
+        }
+        else
+        {
+            printf("Ocurrió un problema al buscar Notebook\n");
+        }
+
+        todoOk = 1;
+    }
+    return todoOk;
+}
+
+int menuModificarNotebook()
+{
+    int opcion;
+    printf("   *** Menu Modificar ***\n\n");
+    printf("1- Precio\n");
+    printf("2- Tipo\n");
+    printf("3- Salir\n\n");
+    printf("Ingrese opción: ");
+    scanf("%d", &opcion);
+    return opcion;
+}
+
+int hardcodearNotebooks(eNotebook vec[], int tam, int cant, int* pId)
+{
+    int todoOk = 0;
+    eNotebook impostores[] =
+    {
+        {0, "Modelo_1", 1000, 5000, 20000,0},
+        {0, "Modelo_2", 1001, 5000, 25000,0},
+        {0, "Modelo_3", 1001, 5000, 35750,0},
+        {0, "Modelo_4", 1003, 5000, 40000,0},
+        {0, "Modelo_5", 1002, 5000, 15800,0}
+    };
+
+    if(vec != NULL && tam > 0 && pId != NULL && cant > 0 && cant <= tam)
+    {
+        for(int i = 0; i < cant; i++)
+        {
+            vec[i] = impostores[i];
+            vec[i].id = *pId;
+            *pId = *pId +1;
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+
+}
+
+
+int cargarDescripcionTipo(eTipo tipos[], int tam, int id, char descripcion[])//El char descripcion es lo que voy a
+{ 																					//cargar para devolverlo.
+	int todoOk = 0;
+	int indice;
+
+	buscarTipo(tipos, tam, id, &indice); //Busco el sector segun el id que recibo y cargo el indice
+
+    if(descripcion != NULL && indice != -1) //Si indice es distinto de -1, es decir, si encontro indice ...
+    {
+		strcpy(descripcion, tipos[indice].descripcion); // Le cargo a 'descripcion', el valor de la descripcion del
+														   // sector que corresponde
+		todoOk = 1;
+    }
+
+  return todoOk;
+}
+
+
+
+
+
+
+
+
+
+
+

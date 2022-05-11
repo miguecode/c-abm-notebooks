@@ -1,0 +1,21 @@
+/*
+ * Notebook.h
+ *
+ *  Created on: 11 may. 2022
+ *      Author: JUNMI
+ */
+
+#ifndef NOTEBOOK_H_
+#define NOTEBOOK_H_
+
+typedef struct
+{
+    int id;
+    char modelo[20];
+    float precio;
+    int idMarca;
+    int idTipo;
+    int isEmpty;
+} eNetbook;
+
+#endif /* NOTEBOOK_H_ */
