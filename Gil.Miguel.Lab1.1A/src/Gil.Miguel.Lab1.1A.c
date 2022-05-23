@@ -20,15 +20,11 @@
 #include "Trabajo.h"
 #include "Fecha.h"
 
-#define ASC 1
-#define DESC 0
-
 #define TAM 10
 #define TAMM 4
 #define TAMT 4
 #define TAMS 4
 #define TAMTR 10
-
 
 int main() {
 	setbuf(stdout, NULL);
@@ -147,7 +143,6 @@ int main() {
 	while(salir != 's');
 
 	printf("Fin del programa");
-
 
 	return 0;
 }
