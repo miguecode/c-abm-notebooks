@@ -17,19 +17,26 @@ int menu()
 	int opcion;
 
 	printf("  ***** MENU DE OPCIONES *****     \n\n");
-	printf("Ingrese una opción del 1 al 10: \n\n");
+	printf("Ingrese una opción del 1 al 17: \n\n");
 
 	printf("1. ALTA NOTEBOOK\n");
 	printf("2. MODIFICAR NOTEBOOK\n");
 	printf("3. BAJA NOTEBOOK\n");
-	printf("4. LISTAR NOTEBOOKS \n");
-	printf("5. LISTAR MARCAS \n");
-	printf("6. LISTAR TIPOS \n");
-	printf("7. LISTAR SERVICIOS \n");
-	printf("8. ALTA TRABAJO \n");
-	printf("9. LISTAR TRABAJOS \n\n");
+	printf("4. LISTAR NOTEBOOKS\n");
+	printf("5. LISTAR MARCAS\n");
+	printf("6. LISTAR TIPOS\n");
+	printf("7. LISTAR SERVICIOS\n");
+	printf("8. ALTA TRABAJO\n");
+	printf("9. LISTAR TRABAJOS\n\n");
+	printf("10. INFORMAR NOTEBOOKS DE UN TIPO\n");
+	printf("11. INFORMAR NOTEBOOKS DE UNA MARCA\n");
+	printf("12. INFORMAR LA O LAS NOTEBOOKS MÁS BARATAS\n");
+	printf("13. INFORMAR NOTEBOOKS DE CADA MARCA\n");
+	printf("14. INFORMAR CANTIDAD DE NOTEBOOKS DE UNA MARCA Y UN TIPO\n");
+	printf("15. INFORMAR LA O LAS MARCAS CON MÁS NOTEBOOKS\n");
+	printf("16. INFORMAR EL O LOS TRABAJOS DE UNA NOTEBOOK\n\n");
 
-	printf("10. SALIR \n\n");
+	printf("17. SALIR \n\n");
 
 	printf("Ingrese opción: ");
 	fflush(stdin);
@@ -39,7 +46,6 @@ int menu()
 	{
 		return opcion;
 	}
-
 
 	return todoOk;
 }
@@ -66,13 +72,3 @@ void confirmarSalidaMenu(char* p)
 		*p = confirma;
 	}
 }
-
-
-
-
-
-
-
-
-
-

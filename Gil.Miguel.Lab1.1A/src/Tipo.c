@@ -17,7 +17,7 @@ int listarTipos(eTipo tipos[], int tam)
 
 		if(tipos != NULL && tam > 0)
 		{
-			printf("***  Lista de Tipos  ***\n\n");
+			printf("\n***  Lista de Tipos  ***\n\n");
 			printf("    ID      Descripcion\n");
 			printf("------------------------\n");
 			for(int i = 0; i < tam; i++){
@@ -46,19 +46,19 @@ int cargarDescripcionTipo(eTipo tipos[], int tam, int id, char descripcion[])
   return todoOk;
 }
 
-int buscarTipo(eTipo tipos[], int tam, int id, int* pIndice) //El puntero indice es lo que voy a buscar para devolver
+int buscarTipo(eTipo tipos[], int tam, int id, int* pIndice)
 {
 	int todoOk = 0;
 
 	if(tipos != NULL && tam > 0 && pIndice != NULL)
 	{
-		*pIndice = -1;   //Seteamos que no se encontró coincidencia
-		for(int i=0; i < tam; i++)  //Recorremos
+		*pIndice = -1;
+		for(int i=0; i < tam; i++)
 		{
-			if(tipos[i].id == id)  //Si la id del sector (puede ser 5000, 5001.. etc) es igual a la id recibida...
+			if(tipos[i].id == id)
 			{
-				*pIndice = i;  //Cargo en indice la posición en donde se hayó la coincidencia (0, 1, 2, etc)
-				break;  //Corto para que no siga buscando
+				*pIndice = i;
+				break;
 			}
 		}
 
@@ -83,5 +83,3 @@ int validarTipo(eTipo tipos[], int tam, int id)
 
 	return esValido;
 }
-
-

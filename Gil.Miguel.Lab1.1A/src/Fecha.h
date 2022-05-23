@@ -16,7 +16,7 @@ typedef struct{
 
 #endif // FECHA_H_INCLUDED
 
-/// @brief Valido que una fecha sea posible. No toma en cuenta los años bisiestos
+/// @brief Valido que una fecha sea posible. No toma en cuenta los años bisiestos.
 ///
 /// @param unaFecha recibo la ddm de la fecha que quiero validar
 /// @return devuelvo 1 cuando finalice la función y 0 si le llegó algún dato inválido

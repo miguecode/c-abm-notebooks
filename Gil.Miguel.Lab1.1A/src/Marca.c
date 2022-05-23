@@ -17,7 +17,7 @@ int listarMarcas(eMarca marcas[], int tam)
 
 		if(marcas != NULL && tam > 0)
 		{
-			printf("***  Lista de Marcas  ***\n\n");
+			printf("\n***  Lista de Marcas  ***\n\n");
 			printf("    ID        Descripcion\n");
 			printf("----------------------------\n");
 			for(int i = 0; i < tam; i++){
@@ -79,7 +79,6 @@ int validarMarca(eMarca marcas[], int tam, int id)
 	{
 		esValido = 1;
 	}
-
 
 	return esValido;
 }

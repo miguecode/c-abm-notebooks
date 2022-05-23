@@ -21,7 +21,7 @@ int validarPalabra(char* palabra)
 		while((palabra == NULL) || (strlen(palabra) < 2) || (strlen(palabra) > 19)
 			|| ((!(palabra[i] >= 65 && palabra[i] <= 90)) && (!(palabra[i] >= 97 && palabra[i] <= 122))))
 		{
-			printf("Nombre inválido. Debe ingresar entre 2-49 caracteres. Sólo letras, sin tildes ni espacios \n");
+			printf("Modelo inválido. Debe ingresar entre 2-49 caracteres. Sólo letras, sin tildes ni espacios. \n");
 			printf("Reingrese: ");
 			fflush(stdin);
 			gets(palabra);
@@ -70,17 +70,23 @@ int validarFloat(int validarFloat, float* pNum)
 }
 
 
-int validarCodigo(char* auxCad)
+int validarCodigo(char* codigo)
 {
 	int todoOk = 0;
 
-	if(auxCad != NULL)
+	if(codigo != NULL)
 	{
-		while(strlen(auxCad) >= 11 || strlen(auxCad) <=9)
+		for(int i = 0; i < strlen(codigo); i++)
 		{
-			printf("Código erróneo (Debe tener 10 dígitos). Reingrese código: ");
-			fflush(stdin);
-			gets(auxCad);
+			while(strlen(codigo) < 3 || strlen(codigo) > 19
+			|| ((!(codigo[i] >= 65 && codigo[i] <= 90)) && (!(codigo[i] >= 97 && codigo[i] <= 122))
+			&& (!(codigo[i] >= 48 && codigo[i] <= 57))))
+			{
+				printf("Modelo inválido. Recuerde que debe tener entre 3-19 caracteres, sólo letras sin tilde y números.\n");
+				printf("Reingrese modelo: ");
+				fflush(stdin);
+				gets(codigo);
+			}
 		}
 	}
 

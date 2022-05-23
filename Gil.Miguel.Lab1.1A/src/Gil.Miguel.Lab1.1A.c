@@ -18,7 +18,7 @@
 #include "Tipo.h"
 #include "Servicio.h"
 #include "Trabajo.h"
-
+#include "Fecha.h"
 
 #define ASC 1
 #define DESC 0
@@ -27,12 +27,11 @@
 #define TAMM 4
 #define TAMT 4
 #define TAMS 4
-#define TAMTR 5
+#define TAMTR 10
 
 
 int main() {
 	setbuf(stdout, NULL);
-
 
 	char salir = 'n';
 	int proximaId = 10000;
@@ -63,6 +62,7 @@ int main() {
 	inicializarTrabajos(listaT, TAMTR);
 
 	hardcodearNotebooks(lista, TAM, 5, &proximaId);
+	hardcodearTrabajos(listaT, TAMTR, 5, &idTrabajo);
 
 	do
 	{
@@ -70,30 +70,19 @@ int main() {
 		{
 
 		case 1:
-			if(altaNotebook(lista, TAM, &proximaId, marcas, TAMM, tipos, TAMT))
-			{
-				printf("Notebok agregada correctamente\n");
-			}
-			else
-			{
-				printf("Error al hacer el alta de Notebok\n");
-			}
+			altaNotebook(lista, TAM, &proximaId, marcas, TAMM, tipos, TAMT);
 			break;
 
 		case 2:
-			if(modificarNotebook(lista, TAM, marcas, TAMM, tipos, TAMT) == 0)
-			{
-				printf("Error al hacer la modificación de Notebok\n");
-			}
+			modificarNotebook(lista, TAM, marcas, TAMM, tipos, TAMT);
 			break;
 
 		case 3:
 			bajaNotebook(lista, TAM, marcas, TAMM, tipos, TAMT);
-
 			break;
 
 		case 4:
-			listarNotebooks(lista, marcas, TAMM, tipos, TAMT);
+			listarNotebooks(lista, TAM, marcas, TAMM, tipos, TAMT);
 			break;
 
 		case 5:
@@ -109,20 +98,47 @@ int main() {
 			break;
 
 		 case 8:
-			altaTrabajo(listaT, TAMTR, &idTrabajo, lista, TAM, marcas, TAMM,
-			tipos, TAMT, servicios, TAMS);
+			altaTrabajo(listaT, TAMTR, &idTrabajo, lista, TAM, marcas, TAMM, tipos, TAMT, servicios, TAMS);
 			break;
 
 		 case 9:
-			listarTrabajos(listaT, lista, TAM, servicios, TAMS);
+			listarTrabajos(listaT, TAMTR, lista, TAM, servicios, TAMS);
 			break;
 
-	     case 10:
-	            confirmarSalidaMenu(&salir);
+		 case 10:
+			informarNotebooksTipo(lista, TAM, tipos, TAMT, marcas, TAMM);
+			break;
+
+		 case 11:
+			informarNotebooksMarca(lista, TAM, marcas, TAMM, tipos, TAMT);
+			break;
+
+		 case 12:
+		    informarNotebookMenorPrecio(lista, TAM, marcas, TAMM, tipos, TAMT);
+			break;
+
+		 case 13:
+			informarNotebooksXMarca(lista, TAM, marcas, TAMM, tipos, TAMT);
+			break;
+
+		 case 14:
+			informarCantidadNotMarcaYTipo(lista, TAM, marcas, TAMM, tipos, TAMT);
+			break;
+
+		 case 15:
+			informarMarcaMayorNotebooks(lista, TAM, marcas, TAMM);
+			break;
+
+		 case 16:
+			informarTrabajosNotebook(listaT, TAMTR, lista, TAM, marcas, TAMM, tipos, TAMT, servicios, TAMS);
+			break;
+
+	     case 17:
+	        confirmarSalidaMenu(&salir);
 	        break;
 
 		default:
-			printf("Opción inválida. Debe ingresar una opción del 1 al 10\n");
+			printf("Opción inválida. Debe ingresar una opción del 1 al 17\n");
 			break;
 		}
 		system("pause");

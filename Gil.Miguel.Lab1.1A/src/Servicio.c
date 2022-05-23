@@ -5,7 +5,6 @@
  *      Author: JUNMI
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,11 +17,11 @@ int listarServicios(eServicio servicios[], int tam)
 
 		if(servicios != NULL && tam > 0)
 		{
-			printf("***  Lista de Servicios  ***\n\n");
-			printf("    ID        Descripcion\n");
-			printf("------------------------\n");
+			printf("\n     ***  Lista de Servicios  ***\n\n");
+			printf("    ID        Descripcion         Precio\n");
+			printf("--------------------------------------------\n");
 			for(int i = 0; i < tam; i++){
-				printf("   %4d    %10s\n", servicios[i].id, servicios[i].descripcion);
+				printf("   %4d    %13s       $%9.2f\n", servicios[i].id, servicios[i].descripcion, servicios[i].precio);
 			}
 			printf("\n\n");
 			todoOk = 1;
@@ -80,7 +79,6 @@ int validarServicio(eServicio servicios[], int tam, int id)
 	{
 		esValido = 1;
 	}
-
 
 	return esValido;
 }

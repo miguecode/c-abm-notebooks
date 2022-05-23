@@ -48,7 +48,7 @@ int mostrarTrabajo(eTrabajo lista, eNotebook notebooks[], int tamNot, eServicio 
 
 
 
-    printf("  %4d         %10s       %10s             %02d/%02d/%d\n",
+    printf("  %4d         %10s       %13s           %02d/%02d/%d\n",
     lista.id, descNotebook, descServicio, lista.fPactada.dia, lista.fPactada.mes, lista.fPactada.anio);
 
         todoOk = 1;
@@ -56,16 +56,16 @@ int mostrarTrabajo(eTrabajo lista, eNotebook notebooks[], int tamNot, eServicio 
     return todoOk;
 }
 
-int listarTrabajos(eTrabajo vec[], eNotebook notebooks[], int tamNot, eServicio servicios[], int tamSer)
+int listarTrabajos(eTrabajo vec[], int tamTra, eNotebook notebooks[], int tamNot, eServicio servicios[], int tamSer)
 {
     int todoOk = 0;
     int flag = 0;
     if(vec != NULL && notebooks != NULL && tamNot > 0 && servicios != NULL && tamSer > 0)
     {
-        printf("          *** Listado de Trabajos ***\n\n");
-        printf("   ID             Notebook       Servicio       Fecha Pactada    \n");
-        printf("-----------------------------------------------------------------\n");
-        for(int i=0; i < 5; i++)
+        printf("\n                   *** Listado de Trabajos ***\n\n");
+        printf("   ID             Notebook           Servicio           Fecha Pactada    \n");
+        printf("-----------------------------------------------------------------------\n");
+        for(int i=0; i < tamTra; i++)
         {
         	if(!vec[i].isEmpty)
         	{
@@ -75,7 +75,7 @@ int listarTrabajos(eTrabajo vec[], eNotebook notebooks[], int tamNot, eServicio 
         }
         if(flag == 0)
         {
-            printf("     No hay trabajos en el sistema");
+            printf("                  No hay trabajos en el sistema");
         }
         printf("\n\n");
 
@@ -121,12 +121,11 @@ int altaTrabajo(eTrabajo vec[], int tam, int* pId, eNotebook notebooks[], int ta
             if(indice == -1)
             {
                 printf("No hay lugar en el sistema\n");
+                return todoOk;
             }
             else
             {
-
-
-            	listarNotebooks(notebooks, marcas, tamMar, tipos, tamTip);
+            	listarNotebooks(notebooks, tamNot, marcas, tamMar, tipos, tamTip);
 
  	 	 	 	printf("Ingrese la ID de la notebook: ");
                 fflush(stdin);
@@ -138,7 +137,6 @@ int altaTrabajo(eTrabajo vec[], int tam, int* pId, eNotebook notebooks[], int ta
 					fflush(stdin);
 					scanf("%d", &nuevoTrabajo.idNotebook);
 				}
-
 
 				listarServicios(servicios, tamSer);
 
@@ -158,7 +156,7 @@ int altaTrabajo(eTrabajo vec[], int tam, int* pId, eNotebook notebooks[], int ta
                 validFecha = scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
                 while(validFecha != 3 || validarFecha(&fecha) != 1)
                 {
-                	printf("Fecha inválida. Recuerde que debe separar día, mes y año (máx 2030) usando / / / \n");
+                	printf("Fecha inválida. Recuerde que debe separar día, mes y año (1990-2022) usando / / / \n");
 					printf("Reingrese fecha dd/mm/aaaa: ");
 					fflush(stdin);
 					validFecha = scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
@@ -171,16 +169,93 @@ int altaTrabajo(eTrabajo vec[], int tam, int* pId, eNotebook notebooks[], int ta
                 *pId = *pId + 1;
                 vec[indice] = nuevoTrabajo;
                 todoOk = 1;
+
+                printf("\nTrabajo agregado correctamente\n");
             }
         }
         else
         {
-            printf("Ocurrio un problema con los parámetros\n");
+            printf("Ocurrió un problema con los parámetros\n");
         }
     }
     return todoOk;
 }
 
 
+int hardcodearTrabajos(eTrabajo vec[], int tam, int cant, int* pId)
+{
+    int todoOk = 0;
+    eTrabajo hardcodeos[] =
+    {
+        {0, 10000, 20000, {28,2,2005}, 0},
+        {0, 10002, 20004, {28,1,2005}, 0},
+        {0, 10003, 20001, {4,6,1999}, 0},
+        {0, 10001, 20003, {5,3,2016}, 0},
+        {0, 10004, 20002, {4,3,2016}, 0}
+    };
+
+    if(vec != NULL && tam > 0 && pId != NULL && cant > 0 && cant <= tam)
+    {
+        for(int i = 0; i < cant; i++)
+        {
+            vec[i] = hardcodeos[i];
+            vec[i].id = *pId;
+            *pId = *pId +1;
+        }
+        todoOk = 1;
+    }
+    return todoOk;
+
+}
 
 
+int informarTrabajosNotebook(eTrabajo vec[], int tam, eNotebook notebooks[], int tamNot, eMarca marcas[], int tamMar,
+		eTipo tipos[], int tamTip, eServicio servicios[], int tamSer)
+{
+	int todoOk = 0;
+	int idNotebook;
+	char descNotebook[20];
+	int flag = 0;
+
+    if(vec != NULL && tam > 0 && notebooks != NULL && tamNot > 0 && servicios != NULL && tamSer > 0)
+    {
+    	listarNotebooks(notebooks, tamNot, marcas, tamMar, tipos, tamTip);
+
+    	printf("Ingrese la ID de la notebook: ");
+    	fflush(stdin);
+    	scanf("%d", &idNotebook);
+    	if(!validarNotebook(notebooks, tamNot, idNotebook))
+    	{
+    		printf("Error, esa ID no corresponde a ninguna Notebook.\n\n");
+    		return todoOk;
+    	}
+
+        cargarDescripcionNotebook(notebooks, tamNot, idNotebook, descNotebook);
+
+        printf("\n           ***   Trabajos de la Notebook %s   ***\n", descNotebook);
+        printf("-----------------------------------------------------------------------\n");
+        printf("   ID             Notebook           Servicio           Fecha Pactada    \n");
+        printf("-----------------------------------------------------------------------\n");
+
+
+        for(int i = 0; i < tam; i++)
+        {
+        	if(!vec[i].isEmpty && vec[i].idNotebook == idNotebook)
+        	{
+        		 mostrarTrabajo(vec[i], notebooks, tamNot, servicios, tamSer);
+                flag = 1;
+        	}
+        }
+
+        if(flag == 0)
+        {
+        	printf("Esta Notebook no tiene trabajos\n");
+        }
+
+        todoOk = 1;
+
+    	printf("\n\n");
+    }
+
+	return todoOk;
+}
