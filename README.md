@@ -6,7 +6,7 @@ Este repositorio contiene un proyecto que corresponde al Primer Parcial de la ma
 
 Utilizo el lenguaje **C**, con el cual aprendí los fundamentos de la programación. Hecho en el IDE Eclipse.
 
-El parcial consta de escribir unas simples funciones que el profesor nos pidió. 
+El proyecto es una aplicación de consola. Un ABM de Notebooks que despliega un menú con opciones para que el usuario haga lo que quiera. 
 
 > [!NOTE]
 > Universidad Tecnológica Nacional, 2022.
