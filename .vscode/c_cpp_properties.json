@@ -5,7 +5,8 @@
       "includePath": [
         "${workspaceFolder}/**"
       ],
-      "compilerPath": "C:/MinGW/bin/gcc.exe",
+      // En 'compilerPath' hay que colocar la ruta del archivo 'gcc.exe'
+      "compilerPath": "C:/MinGW/bin/gcc.exe", 
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "windows-gcc-x86",
