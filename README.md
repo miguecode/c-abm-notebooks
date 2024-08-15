@@ -1,10 +1,16 @@
-# 🖥️ ABM Notebooks - Aplicación de Consola
+# 💻 ABM Notebooks - Aplicación de Consola
 
 Este proyecto es una aplicación de consola, fue hecho en 2022 y se trata de un Menú ABM para una gestión básica de Notebooks.
 
 ## 📘 Descripción
 
 ABM Notebooks es una aplicación de consola que permite gestionar notebooks mediante operaciones básicas de CRUD (Crear, Leer, Actualizar, Eliminar). La aplicación no persiste los datos, ya que estos están establecidos dentro del programa, para hacerlo todo de la forma más sencilla posible. En mi repositorio hay otros ejemplos de aplicaciones de consola hechos en C los cuales están más avanzados en este aspecto, y cuentan con persistencia de datos mediante archivos.
+
+## 🚀 Menú
+
+Así se ve la pantalla principal al iniciar el programa.
+
+<img src="https://github.com/user-attachments/assets/9311edc2-4162-40dd-b83f-11b26878d45f" width="450"/>
 
 ## 🛠️ Funcionalidades
 
@@ -15,7 +21,7 @@ ABM Notebooks es una aplicación de consola que permite gestionar notebooks medi
 - **Informes específicos**: Muestra una lista de notebooks que cumpla ciertas condiciones.
 - **Gestión de Marcas, Tipos y Servicios**: Permite manejar categorías adicionales asociadas a las notebooks.
 
-## 🏗️ Cómo Ejecutar el Proyecto
+## 👨‍💻 Cómo Ejecutar el Proyecto
 
 Para ejecutar este proyecto, hay que seguir estos pasos:
 
