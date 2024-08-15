@@ -29,7 +29,11 @@ Para ejecutar este proyecto, hay que seguir estos pasos:
 2. Ejecutar el archivo `outDebug.exe` que se genera en la carpeta `build/Debug`.
 3. Listo, ya se puede interactuar con el menú ABM de Notebooks desde la consola. 🎉
 
+- Usando **Visual Studio Code**, la extensión ***C/C++ Runner*** es perfecta para compilar y ejecutar el programa. Para hacerlo, simplemente hay que seleccionar la carpeta 'src'. Al compilar, se crea el archivo 'outDebug.exe' (en la ubicación que determine el archivo 'launch.json' que está en la carpeta '.vscode'). Este archivo **'outDebug.exe'** es el que correrá la aplicación.
+
+  <img src="https://github.com/user-attachments/assets/21aac7da-b211-4983-b944-9590aa125365" width="500"/>
+
 ## 📌 Aclaraciones
 - En su momento, este proyecto fue creado con el fin de aprender a programar y no persiste datos. Todo se maneja en memoria durante la ejecución, contando con datos predeterminados.
-- Fue creado en 2022, mientras cursaba la carrera de 'Tecnicatura Universitaria en Programación', en la Universidad Tecnológica Nacional.
+- Fue creado en 2022, mientras cursaba la carrera de Tecnicatura Universitaria en Programación, en la Universidad Tecnológica Nacional.
 - No se aceptan contribuciones ni está bajo ninguna licencia específica.
