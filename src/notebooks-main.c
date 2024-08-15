@@ -10,128 +10,127 @@
 #include "Trabajo.h"
 #include "Fecha.h"
 
-#define TAM 10
-#define TAMM 4
-#define TAMT 4
-#define TAMS 4
-#define TAMTR 10
+#define TAM_NOTEBOOKS 10
+#define TAM_MARCAS 4
+#define TAM_TIPOS 4
+#define TAM_SERVICIOS 4
+#define TAM_TRABAJOS 10
 
-int main() {
+int main()
+{
 	setbuf(stdout, NULL);
-	
+
 	char salir = 'n';
 	int proximaId = 10000;
 	int idTrabajo = 7000;
 
-	eNotebook lista[TAM];
-	eTrabajo listaT[TAMTR];
-	eMarca marcas[TAMM] ={
-		{1000, "Compaq"},
-		{1001, "Asus"},
-		{1002, "Acer"},
-		{1003, "HP"}
-	};
-	eTipo tipos[TAMT] ={
-		{5000, "Gamer"},
-		{5001, "Disenio"},
-		{5002, "Ultrabook"},
-		{5003, "Normalita"}
-	};
-	eServicio servicios[TAMS] ={
-		{20000, "Bateria", 2250},
-		{20001, "Display", 10300},
-		{20002, "Mantenimiento", 4400},
-		{20003, "Fuente", 5600}
-	};
+	eNotebook lista[TAM_NOTEBOOKS];
+	eTrabajo listaT[TAM_TRABAJOS];
+	eMarca marcas[TAM_MARCAS] = {
+			{1000, "Compaq"},
+			{1001, "Asus"},
+			{1002, "Acer"},
+			{1003, "HP"}};
+	eTipo tipos[TAM_TIPOS] = {
+			{5000, "Gamer"},
+			{5001, "Disenio"},
+			{5002, "Ultrabook"},
+			{5003, "Normalita"}};
+	eServicio servicios[TAM_SERVICIOS] = {
+			{20000, "Bateria", 2250},
+			{20001, "Display", 10300},
+			{20002, "Mantenimiento", 4400},
+			{20003, "Fuente", 5600}};
 
-	inicializarNotebooks(lista, TAM);
-	inicializarTrabajos(listaT, TAMTR);
+	inicializarNotebooks(lista, TAM_NOTEBOOKS);
+	inicializarTrabajos(listaT, TAM_TRABAJOS);
 
-	hardcodearNotebooks(lista, TAM, 5, &proximaId);
-	hardcodearTrabajos(listaT, TAMTR, 5, &idTrabajo);
+	hardcodearNotebooks(lista, TAM_NOTEBOOKS, 5, &proximaId);
+	hardcodearTrabajos(listaT, TAM_TRABAJOS, 5, &idTrabajo);
 
 	do
 	{
-		switch(menu())
+		int opcionElegida = menu();
+
+		switch (opcionElegida)
 		{
-			
 		case 1:
-			altaNotebook(lista, TAM, &proximaId, marcas, TAMM, tipos, TAMT);
+			altaNotebook(lista, TAM_NOTEBOOKS, &proximaId, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
 		case 2:
-			modificarNotebook(lista, TAM, marcas, TAMM, tipos, TAMT);
+			modificarNotebook(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
 		case 3:
-			bajaNotebook(lista, TAM, marcas, TAMM, tipos, TAMT);
+			bajaNotebook(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
 		case 4:
-			listarNotebooks(lista, TAM, marcas, TAMM, tipos, TAMT);
+			listarNotebooks(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
 		case 5:
-			listarMarcas(marcas, TAMM);
+			listarMarcas(marcas, TAM_MARCAS);
 			break;
 
 		case 6:
-			listarTipos(tipos, TAMT);
+			listarTipos(tipos, TAM_TIPOS);
 			break;
 
-		 case 7:
-			listarServicios(servicios, TAMS);
+		case 7:
+			listarServicios(servicios, TAM_SERVICIOS);
 			break;
 
-		 case 8:
-			altaTrabajo(listaT, TAMTR, &idTrabajo, lista, TAM, marcas, TAMM, tipos, TAMT, servicios, TAMS);
+		case 8:
+			altaTrabajo(listaT, TAM_TRABAJOS, &idTrabajo, lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS, servicios, TAM_SERVICIOS);
 			break;
 
-		 case 9:
-			listarTrabajos(listaT, TAMTR, lista, TAM, servicios, TAMS);
+		case 9:
+			listarTrabajos(listaT, TAM_TRABAJOS, lista, TAM_NOTEBOOKS, servicios, TAM_SERVICIOS);
 			break;
 
-		 case 10:
-			informarNotebooksTipo(lista, TAM, tipos, TAMT, marcas, TAMM);
+		case 10:
+			informarNotebooksTipo(lista, TAM_NOTEBOOKS, tipos, TAM_TIPOS, marcas, TAM_MARCAS);
 			break;
 
-		 case 11:
-			informarNotebooksMarca(lista, TAM, marcas, TAMM, tipos, TAMT);
+		case 11:
+			informarNotebooksMarca(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
-		 case 12:
-		    informarNotebookMenorPrecio(lista, TAM, marcas, TAMM, tipos, TAMT);
+		case 12:
+			informarNotebookMenorPrecio(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
-		 case 13:
-			informarNotebooksXMarca(lista, TAM, marcas, TAMM, tipos, TAMT);
+		case 13:
+			informarNotebooksXMarca(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
-		 case 14:
-			informarCantidadNotMarcaYTipo(lista, TAM, marcas, TAMM, tipos, TAMT);
+		case 14:
+			informarCantidadNotMarcaYTipo(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS);
 			break;
 
-		 case 15:
-			informarMarcaMayorNotebooks(lista, TAM, marcas, TAMM);
+		case 15:
+			informarMarcaMayorNotebooks(lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS);
 			break;
 
-		 case 16:
-			informarTrabajosNotebook(listaT, TAMTR, lista, TAM, marcas, TAMM, tipos, TAMT, servicios, TAMS);
+		case 16:
+			informarTrabajosNotebook(listaT, TAM_TRABAJOS, lista, TAM_NOTEBOOKS, marcas, TAM_MARCAS, tipos, TAM_TIPOS, servicios, TAM_SERVICIOS);
 			break;
 
-			case 17:
-				confirmarSalidaMenu(&salir);
+		case 0:
+			confirmarSalidaMenu(&salir);
 			break;
 
 		default:
-			printf("Opci�n inv�lida. Debe ingresar una opci�n del 1 al 17\n");
+			printf("Opcion invalida. Debe ingresar una opcion del 1 al 16\n");
 			break;
 		}
 		system("pause");
-	}
-	while(salir != 's');
+		system("cls");
+	} while (salir != 's');
 
-	printf("Fin del programa");
+	printf("¡Gracias por usar ABM Notebooks!");
 
 	return 0;
 }

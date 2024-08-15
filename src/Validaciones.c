@@ -5,17 +5,17 @@
 
 #include "Validaciones.h"
 
-int validarPalabra(char* palabra)
+int validarPalabra(char *palabra)
 {
 	int todoOk = -1;
 
-	for(int i = 0; i < strlen(palabra); i++)
+	for (int i = 0; i < strlen(palabra); i++)
 	{
-		while((palabra == NULL) || (strlen(palabra) < 2) || (strlen(palabra) > 19)
-			|| ((!(palabra[i] >= 65 && palabra[i] <= 90)) && (!(palabra[i] >= 97 && palabra[i] <= 122))))
+		while ((palabra == NULL) || (strlen(palabra) < 2) || (strlen(palabra) > 19) ||
+		 ((!(palabra[i] >= 65 && palabra[i] <= 90)) && (!(palabra[i] >= 97 && palabra[i] <= 122))))
 		{
-			printf("Modelo inv�lido. Debe ingresar entre 2-49 caracteres. S�lo letras, sin tildes ni espacios. \n");
-			printf("Reingrese: ");
+			printf("Modelo invalido. Debe ingresar entre 2-49 caracteres. Solo letras, sin tildes ni espacios. \n");
+			printf("[>] Reingrese: ");
 			fflush(stdin);
 			gets(palabra);
 		}
@@ -26,16 +26,15 @@ int validarPalabra(char* palabra)
 	return todoOk;
 }
 
-
-int validarInt(int validarInt, int* pNum)
+int validarInt(int validarInt, int *pNum)
 {
 	int todoOk = 0;
 	int num;
 	num = *pNum;
 
-	while(validarInt != 1 || pNum == NULL || num < 0)
+	while (validarInt != 1 || pNum == NULL || num < 0)
 	{
-		printf("Error, debe ingresar un n�mero entero mayor a 0. Reingrese n�mero: ");
+		printf("[>] Error, debe ingresar un numero entero mayor a 0. Reingrese numero: ");
 		fflush(stdin);
 		validarInt = scanf("%d", &num);
 	}
@@ -44,16 +43,15 @@ int validarInt(int validarInt, int* pNum)
 	return todoOk;
 }
 
-
-int validarFloat(int validarFloat, float* pNum)
+int validarFloat(int validarFloat, float *pNum)
 {
 	int todoOk = 0;
 	float num;
 	num = *pNum;
 
-	while(validarFloat != 1 || pNum == NULL  || num <= 0)
+	while (validarFloat != 1 || pNum == NULL || num <= 0)
 	{
-		printf("Error, debe ingresar un precio num�rico y mayor a 0. Reingrese precio: ");
+		printf("[>] Error, debe ingresar un precio numerico y mayor a 0. Reingrese precio: ");
 		fflush(stdin);
 		validarFloat = scanf("%f", &num);
 	}
@@ -62,21 +60,18 @@ int validarFloat(int validarFloat, float* pNum)
 	return todoOk;
 }
 
-
-int validarCodigo(char* codigo)
+int validarCodigo(char *codigo)
 {
 	int todoOk = 0;
 
-	if(codigo != NULL)
+	if (codigo != NULL)
 	{
-		for(int i = 0; i < strlen(codigo); i++)
+		for (int i = 0; i < strlen(codigo); i++)
 		{
-			while(strlen(codigo) < 3 || strlen(codigo) > 19
-			|| ((!(codigo[i] >= 65 && codigo[i] <= 90)) && (!(codigo[i] >= 97 && codigo[i] <= 122))
-			&& (!(codigo[i] >= 48 && codigo[i] <= 57))))
+			while (strlen(codigo) < 3 || strlen(codigo) > 19 || ((!(codigo[i] >= 65 && codigo[i] <= 90)) && (!(codigo[i] >= 97 && codigo[i] <= 122)) && (!(codigo[i] >= 48 && codigo[i] <= 57))))
 			{
-				printf("Modelo inv�lido. Recuerde que debe tener entre 3-19 caracteres, s�lo letras sin tilde y n�meros.\n");
-				printf("Reingrese modelo: ");
+				printf("Modelo invalido. Recuerde que debe tener entre 3-19 caracteres, solo letras sin tilde y numeros.\n");
+				printf("[>] Reingrese modelo: ");
 				fflush(stdin);
 				gets(codigo);
 			}

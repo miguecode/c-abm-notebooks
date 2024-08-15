@@ -7,11 +7,10 @@
 /// @return Devuelve un entero que indica la opcion ingresada
 int menu();
 
-
 /// @brief Le pregunta al usuario si confiram la salida del men�, ingresando
 /// 's' o 'n'.
 ///
 /// @param p recibe la ddm de una variable a la cual se le va a cargar el valor 's' o 'n'
-void confirmarSalidaMenu(char* p);
+void confirmarSalidaMenu(char *p);
 
 #endif /* MENU_H_ */

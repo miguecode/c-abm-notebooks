@@ -8,18 +8,19 @@ int listarTipos(eTipo tipos[], int tam)
 {
 	int todoOk = 0;
 
-		if(tipos != NULL && tam > 0)
+	if (tipos != NULL && tam > 0)
+	{
+		printf("\n***  Lista de Tipos  ***\n\n");
+		printf("    ID      Descripcion\n");
+		printf("------------------------\n");
+		for (int i = 0; i < tam; i++)
 		{
-			printf("\n***  Lista de Tipos  ***\n\n");
-			printf("    ID      Descripcion\n");
-			printf("------------------------\n");
-			for(int i = 0; i < tam; i++){
-				printf("   %4d    %10s\n", tipos[i].id, tipos[i].descripcion);
-			}
-			printf("\n\n");
-			todoOk = 1;
+			printf("   %4d    %10s\n", tipos[i].id, tipos[i].descripcion);
 		}
-	 return todoOk;
+		printf("\n\n");
+		todoOk = 1;
+	}
+	return todoOk;
 }
 
 int cargarDescripcionTipo(eTipo tipos[], int tam, int id, char descripcion[])
@@ -29,26 +30,26 @@ int cargarDescripcionTipo(eTipo tipos[], int tam, int id, char descripcion[])
 
 	buscarTipo(tipos, tam, id, &indice);
 
-    if(descripcion != NULL && indice != -1)
-    {
+	if (descripcion != NULL && indice != -1)
+	{
 		strcpy(descripcion, tipos[indice].descripcion);
 
 		todoOk = 1;
-    }
+	}
 
-  return todoOk;
+	return todoOk;
 }
 
-int buscarTipo(eTipo tipos[], int tam, int id, int* pIndice)
+int buscarTipo(eTipo tipos[], int tam, int id, int *pIndice)
 {
 	int todoOk = 0;
 
-	if(tipos != NULL && tam > 0 && pIndice != NULL)
+	if (tipos != NULL && tam > 0 && pIndice != NULL)
 	{
 		*pIndice = -1;
-		for(int i=0; i < tam; i++)
+		for (int i = 0; i < tam; i++)
 		{
-			if(tipos[i].id == id)
+			if (tipos[i].id == id)
 			{
 				*pIndice = i;
 				break;
@@ -68,11 +69,10 @@ int validarTipo(eTipo tipos[], int tam, int id)
 
 	buscarTipo(tipos, tam, id, &indice);
 
-	if(!(indice == -1))
+	if (!(indice == -1))
 	{
 		esValido = 1;
 	}
-
 
 	return esValido;
 }

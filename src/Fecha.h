@@ -1,11 +1,12 @@
 #ifndef FECHA_H_
 #define FECHA_H_
 
-typedef struct{
-    int dia;
-    int mes;
-    int anio;
-}eFecha;
+typedef struct
+{
+  int dia;
+  int mes;
+  int anio;
+} eFecha;
 
 #endif // FECHA_H_INCLUDED
 
@@ -13,4 +14,4 @@ typedef struct{
 ///
 /// @param unaFecha recibo la ddm de la fecha que quiero validar
 /// @return devuelvo 1 cuando finalice la funci�n y 0 si le lleg� alg�n dato inv�lido
-int validarFecha(eFecha* unaFecha);
+int validarFecha(eFecha *unaFecha);

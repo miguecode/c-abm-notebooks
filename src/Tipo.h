@@ -1,10 +1,11 @@
 #ifndef TIPO_H_
 #define TIPO_H_
 
-typedef struct{
+typedef struct
+{
 	int id;
 	char descripcion[20];
-}eTipo;
+} eTipo;
 
 #endif /* TIPO_H_ */
 
@@ -14,7 +15,6 @@ typedef struct{
 /// @param tam recibe el tama�o del array de la estructura eTipo
 /// @return devuelve 1 si funciono correctamente, y sino devuelve 0
 int listarTipos(eTipo tipos[], int tam);
-
 
 /// @brief Le pasa el valor de descripci�n de la estructura eTipo a un array tambi�n
 /// llamado descripci�n, para poder mostrarlo usando otra funci�n.
@@ -26,7 +26,6 @@ int listarTipos(eTipo tipos[], int tam);
 /// @return devuelve 1 si funciono correctamente, y sino devuelve 0
 int cargarDescripcionTipo(eTipo tipos[], int tam, int id, char descripcion[]);
 
-
 /// @brief Busca por ID el tipo que se solicite, y le da valor al �ndice correspondiente (o -1).
 ///
 /// @param tipos recibe el array de la estructura eTipo
@@ -34,8 +33,7 @@ int cargarDescripcionTipo(eTipo tipos[], int tam, int id, char descripcion[]);
 /// @param id recibe el id del tipo que debe buscar
 /// @param pIndice recibe la ddm de una variable en la cual va a ser cargado el indice correspondiente (o -1)
 /// @return devuelve 1 si funciono correctamente, y sino devuelve 0
-int buscarTipo(eTipo tipos[], int tam, int id, int* pIndice);
-
+int buscarTipo(eTipo tipos[], int tam, int id, int *pIndice);
 
 /// @brief Valida si el ID del tipo ingresado existe o no en el sistema.
 ///

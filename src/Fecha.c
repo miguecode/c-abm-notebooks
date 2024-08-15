@@ -14,8 +14,8 @@ int validarFecha(eFecha* unaFecha)
 	while(!(unaFecha != NULL && (unaFecha->anio >= 1990 && unaFecha->anio <= 2022) &&
 	  (unaFecha->mes > 0 && unaFecha->mes <= 12) && (unaFecha->dia > 0 && unaFecha->dia <= 31)))
 	{
-    	printf("Fecha inv�lida. Recuerde que debe separar d�a, mes y a�o (1990-2022) usando / / / \n");
-		printf("Reingrese fecha dd/mm/aaaa: ");
+    	printf("Fecha invalida. Recuerde que debe separar dia, mes y anio (1990-2022) usando / / / \n");
+		printf("[>] Reingrese fecha dd/mm/aaaa: ");
 		fflush(stdin);
 		scanf("%d/%d/%d", &unaFecha->dia, &unaFecha->mes, &unaFecha->anio);
 	}
@@ -25,8 +25,8 @@ int validarFecha(eFecha* unaFecha)
 	case 2:
 		while(!(unaFecha->dia > 0 && unaFecha->dia <= 28))
 		{
-			printf("D�a inv�lido. Febrero tiene 28 d�as \n");
-			printf("Reingrese d�a: ");
+			printf("Dia invalido. Febrero tiene 28 dias \n");
+			printf("[>] Reingrese dia: ");
 			fflush(stdin);
 			scanf("%d", &unaFecha->dia);
 		}
@@ -36,8 +36,8 @@ int validarFecha(eFecha* unaFecha)
 	case 4:
 		while(!(unaFecha->dia > 0 && unaFecha->dia <= 30))
 		{
-			printf("D�a inv�lido. Abril tiene 30 d�as \n");
-			printf("Reingrese d�a: ");
+			printf("Dia invalido. Abril tiene 30 dias \n");
+			printf("[>] Reingrese dia: ");
 			fflush(stdin);
 			scanf("%d", &unaFecha->dia);
 		}
@@ -47,8 +47,8 @@ int validarFecha(eFecha* unaFecha)
 	case 6:
 		while(!(unaFecha->dia > 0 && unaFecha->dia <= 30))
 		{
-			printf("D�a inv�lido. Junio tiene 30 d�as \n");
-			printf("Reingrese d�a: ");
+			printf("Dia invalido. Junio tiene 30 dias \n");
+			printf("[>] Reingrese dia: ");
 			fflush(stdin);
 			scanf("%d", &unaFecha->dia);
 		}
@@ -58,8 +58,8 @@ int validarFecha(eFecha* unaFecha)
 	case 9:
 		while(!(unaFecha->dia > 0 && unaFecha->dia <= 30))
 		{
-			printf("D�a inv�lido. Septiembre tiene 30 d�as \n");
-			printf("Reingrese d�a: ");
+			printf("Dia invalido. Septiembre tiene 30 dias \n");
+			printf("[>] Reingrese dia: ");
 			fflush(stdin);
 			scanf("%d", &unaFecha->dia);
 		}
@@ -69,8 +69,8 @@ int validarFecha(eFecha* unaFecha)
 	case 11:
 		while(!(unaFecha->dia > 0 && unaFecha->dia <= 30))
 		{
-			printf("D�a inv�lido. Noviembre tiene 30 d�as \n");
-			printf("Reingrese d�a: ");
+			printf("Dia invalido. Noviembre tiene 30 dias \n");
+			printf("[>] Reingrese dia: ");
 			fflush(stdin);
 			scanf("%d", &unaFecha->dia);
 		}
