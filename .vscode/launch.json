@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/JUNIOR/Desktop/C-ABM-Notebooks/src",
-      "program": "c:/Users/JUNIOR/Desktop/C-ABM-Notebooks/src/build/Debug/outDebug",
+      "cwd": "${cwd}/src",
+      "program": "${cwd}/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
