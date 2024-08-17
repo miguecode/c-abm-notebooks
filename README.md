@@ -1,4 +1,4 @@
-# 💻 ABM Notebooks - Aplicación de Consola en 
+# 💻 ABM Notebooks - Aplicación de Consola en C
 
 Este proyecto es una aplicación de consola, fue hecho en 2022 y se trata de un Menú ABM para una gestión básica de Notebooks.
 
