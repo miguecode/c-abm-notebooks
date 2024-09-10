@@ -39,6 +39,6 @@ Para ejecutar este proyecto, hay que seguir estos pasos:
 - No se aceptan contribuciones ni está bajo ninguna licencia específica.
 
 ## 🗃️ Otros proyectos similares
-- [ABM de Pasajeros - Aplicación de consola en C](https://github.com/Leumig/C-ABM-Pasajeros)
-- [Carga Películas - Aplicación de consola en C](https://github.com/Leumig/C-Carga-Peliculas)
-- [Calcular Costos - Aplicación de consola en C](https://github.com/Leumig/C-Calcular-Costos)
+- [ABM de Pasajeros - Aplicación de consola en C](https://github.com/Leumig/c-abm-pasajeros)
+- [Carga Películas - Aplicación de consola en C](https://github.com/Leumig/c-carga-peliculas)
+- [Calcular Costos - Aplicación de consola en C](https://github.com/Leumig/c-calcular-costos)
