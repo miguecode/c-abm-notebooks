@@ -10,7 +10,7 @@ ABM Notebooks es una aplicación de consola que permite gestionar notebooks medi
 
 Así se ve la pantalla principal al iniciar el programa.
 
-<img src="https://github.com/user-attachments/assets/9311edc2-4162-40dd-b83f-11b26878d45f" width="450"/>
+<img src="https://github.com/user-attachments/assets/9311edc2-4162-40dd-b83f-11b26878d45f" width="455"/>
 
 ## 🛠️ Funcionalidades
 
