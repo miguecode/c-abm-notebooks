@@ -36,7 +36,7 @@ Para ejecutar este proyecto, hay que seguir estos pasos:
 ## 📌 Aclaraciones
 - En su momento, este proyecto fue creado con el fin de aprender a programar y no persiste datos. Todo se maneja en memoria durante la ejecución, contando con datos predeterminados.
 - Fue creado en 2022, mientras cursaba la carrera de Tecnicatura Universitaria en Programación, en la Universidad Tecnológica Nacional.
-- No se aceptan contribuciones ni está bajo ninguna licencia específica.
+- No se aceptan contribuciones ni está bajo ninguna licencia específica
 
 ## 🗃️ Otros proyectos similares
 - [ABM de Pasajeros - Aplicación de consola en C](https://github.com/miguecode/c-abm-pasajeros)
